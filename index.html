@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Table</title>
+    <style>
+        /* General reset for body and font */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #444;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* Zebra striping rows */
+        tr:nth-child(even) td {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover td {
+            background-color: #f1f1f1;
+        }
+
+        /* No data available styling */
+        .no-data {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Make sure the table does not exceed the page width */
+        table {
+            table-layout: fixed;
+            word-wrap: break-word;
+        }
+
+        /* Optional: Add responsive design for smaller screens */
+        @media (max-width: 768px) {
+            table {
+                width: 90%;
+            }
+            th, td {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Data from MySQL Database</h1>
+    <table>
+        <thead>
+            <tr>
+                <!-- Dynamically generate headers based on the column names -->
+                {% if data %}
+                    {% for column in data[0].keys() %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                {% else %}
+                    <th colspan="100%" class="no-data">No Data Available</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through each row in the data and display it -->
+            {% if data %}
+                {% for row in data %}
+                    <tr>
+                        {% for value in row.values() %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="100%" class="no-data">No data available</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>

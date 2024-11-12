@@ -1,0 +1,38 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+div{
+    
+    background-color: antiquewhite;
+    color: teal;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+    height: 40px;
+    width: 120px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+button:hover{
+    background-color: darkblue;
+    color: white;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#displayText {
+    display: none;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: darkolivegreen;
+}
